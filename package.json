@@ -13,7 +13,7 @@
     "deploy": "sls deploy",
     "build": "npm run clean && tsc",
     "precover": "npm run clean && tsc",
-    "cover": "istanbul cover --include-all-sources -x '*.jenkins.js' -x 'test/**' node_modules/mocha/bin/_mocha -- --recursive --require build/test/index.js build/test",
+    "cover": "istanbul cover --include-all-sources -x 'test/**' node_modules/mocha/bin/_mocha -- --recursive --require build/test/index.js build/test",
     "postcover": "node_modules/.bin/remap-istanbul -i coverage/coverage.json -o coverage/html -t html",
     "pretest": "npm run clean && tsc",
     "test": "mocha --recursive --require build/test/index.js build/test",

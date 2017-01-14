@@ -13,11 +13,13 @@ import { NodeCallback } from "src/shared/lib/nodeCallback";
 let config = new BaseConfig();
 
 export function helloWorld(event: any, context: any, callback: NodeCallback) {
-    if (event && event.headers && event.headers["X-Gsu-Heartbeat"]) {
+    // Heartbeat must be reachable through a custom authorizer, so it will watch for the Auth header of 'Heartbeat'
+    if (event && event.headers && event.headers["Authorization"] && event.headers["Authorization"] === "Heartbeat") {
         return ResponseHandler.done(null, { "alive": true }, callback);
     }
 
-    if (event && event.headers && event.headers["X-Gsu-Info"]) {
+    // Return service configuration details (optional)
+    if (event && event.headers && event.headers["X-Configuration"]) {
         return ResponseHandler.done(null, config.info, callback);
     }
 
