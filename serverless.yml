@@ -1,12 +1,32 @@
-service: helloWorld
+service: serverlessSeed
 
 provider:
   name: aws
   runtime: nodejs4.3
+  environment:
+    LIFECYCLE: ${file(deploy.env.yml):LIFECYCLE}
+
+package:
+  exclude:
+    - tests/**
+    - .git/**
+    - coverage/**
+    - .sonar/**
+    - src/**
+    - node_modules/@types/**
+    - testresults
+    - build/**/*.js.map
+    - build/test/**
+    - sonar-project.properties
+    - versioning.js
+    - tsconfig.json
+    - .env
 
 functions:
   helloWorld:
-    handler: build/handler.helloWorld
+    environment:
+      MY_ENV_VARIABLE: ${file(deploy.env.yml):MY_ENV_VARIABLE}
+    handler: build/src/functions/helloWorld/handler.helloWorld
     events:
       - http:
           path: /
@@ -14,6 +34,5 @@ functions:
       - http:
           path: /
           method: POST
-
 plugins:
   - serverless-offline
