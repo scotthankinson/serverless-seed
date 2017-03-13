@@ -10,14 +10,11 @@
         "baseUrl": ".",
         "declaration": true,
         "types": [
-            "mocha",
-            "expect.js",
-            "node",
-            "aws-sdk",
-            "request"
+            "node"
         ]
     },
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "build"
     ]
 }
