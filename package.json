@@ -1,7 +1,7 @@
 {
   "name": "serverless-seed",
-  "version": "0.0.5",
-  "description": "Sample project",
+  "version": "0.1.0",
+  "description": "Serverless + TypeScript QuickStart Template",
   "main": "",
   "scripts": {
     "clean": "shx rm -rf build && shx rm -rf coverage && shx rm -rf testreports && shx rm -rf .serverless && shx rm -rf .sonar && npm install && npm run lint",
@@ -24,8 +24,8 @@
     "type": "git",
     "url": "git+https://github.com/scotthankinson/serverless-seed.git"
   },
-  "author": "",
-  "license": "",
+  "author": "Scott Hankinson and Korey Kolberg",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/scotthankinson/serverless-seed/issues"
   },
