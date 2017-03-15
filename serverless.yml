@@ -8,6 +8,7 @@ provider:
 
 package:
   exclude:
+    - web/**
     - tests/**
     - .git/**
     - coverage/**
