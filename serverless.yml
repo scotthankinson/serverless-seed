@@ -1,39 +1,52 @@
-service: serverlessSeed
+service:
+  name: serverless-seed
 
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  
+custom:
+  webpack:
+    includeModules:
+      forceInclude:
+        - source-map-support
+      forceExclude:
+        - aws-sdk
+  
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs12.x
+  memorySize: 512 # optional, default is 1024
+  role: ${file(deploy.env.yml):IAM_ROLE} # Lambda role -- needs SES
+  timeout: 30 
+  stage: dev
   environment:
+    IS_SERVERLESS: ${file(deploy.env.yml):IS_SERVERLESS}
     LIFECYCLE: ${file(deploy.env.yml):LIFECYCLE}
-
+    
 package:
   exclude:
-    - web/**
-    - tests/**
+    - test/**
     - .git/**
     - coverage/**
-    - .sonar/**
     - src/**
+    - web/**
     - node_modules/@types/**
+    - node_modules/serverless
+    - node_modules/serverless-offline
     - testresults
     - build/**/*.js.map
     - build/test/**
-    - sonar-project.properties
-    - versioning.js
     - tsconfig.json
     - .env
+    - .gitignore
 
 functions:
-  helloWorld:
-    environment:
-      MY_ENV_VARIABLE: ${file(deploy.env.yml):MY_ENV_VARIABLE}
-    handler: build/src/functions/helloWorld/handler.helloWorld
+
+  notify:
+    handler: src/functions/hello/handler.hello
     events:
       - http:
-          path: /
-          method: GET
-      - http:
-          path: /
+          path: /hello
           method: POST
-plugins:
-  - serverless-offline
+          cors: true

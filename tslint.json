@@ -22,10 +22,6 @@
             "check-open-brace",
             "check-whitespace"
         ],
-        "quotemark": [
-            true,
-            "double"
-        ],
         "semicolon": [
             true,
             "always"
@@ -56,10 +52,14 @@
             "check-separator",
             "check-type"
         ],
-        // Microsoft-published rules in tslint-microsoft-contrib
-        "max-func-body-length": [true, 100, {"ignore-parameters-to-function-regex": "describe"}],
+        "max-func-body-length": [
+            false,
+            100,
+            {
+                "ignore-parameters-to-function-regex": "describe"
+            }
+        ],
         "mocha-no-side-effect-code": true,
-        "mocha-unneeded-done": true,
-        "no-relative-imports": true
+        "mocha-unneeded-done": true
     }
 }

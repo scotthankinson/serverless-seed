@@ -1,25 +1,30 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "module": "commonjs",
-        "noImplicitAny": true,
-        "outDir": "./build",
-        "target": "ES6",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "baseUrl": ".",
-        "declaration": true,
-        "types": [
-            "mocha",
-            "expect.js",
-            "node",
-            "aws-sdk",
-            "request"
-        ]
-    },
-    "exclude": [
-        "node_modules",
-        "build",
-        "web"
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "lib": [
+      "es6",
+      "es2017"
+    ],
+    "rootDirs": [
+      "./src",
+      "./test"
+    ],
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "sourceMap": true,
+    "target": "es6",
+    "outDir": "./build",
+    "types": [
+      "aws-lambda",
+      "aws-sdk",
+      "mocha",
+      "node"
     ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -1,1 +1,0 @@
-export type NodeCallback = (err: any, data: any) => void;
